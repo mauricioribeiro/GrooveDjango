@@ -1,0 +1,10 @@
+body{
+	margin: 0;
+	padding: 0
+}
+header{
+	width: 100%;
+    background: #ff9900;
+    height: 80px;
+    color: #fff;
+}
