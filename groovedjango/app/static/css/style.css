@@ -4,7 +4,18 @@ body{
 }
 header{
 	width: 100%;
-    background: #ff9900;
-    height: 80px;
+    background: #ff8d00;
     color: #fff;
+}
+.pos-header{
+	width: 100%;
+    background: #c5c5c5;
+    padding-bottom: 10px;
+}
+
+.glyphicon{
+	vertical-align: top;
+}
+.artist{
+	margin: 20px 0;
 }

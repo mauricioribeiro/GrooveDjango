@@ -1,23 +1,35 @@
 {% include 'header.html' %}
-	
-	<h1>Artistas</h1>
 
-	{% for artista in artistas %}	
-		<div class="row">
-			<div class="col-md-4">
-				<img class="img-thumbnail" src="http://placehold.it/350x350">
-			</div>
-			<div class="col-md-8">
-				<h2>{{ artista.nome }}</h2>
-				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
+	<div class="pos-header">
+		<div class="container">
+			<h1><i class="glyphicon glyphicon-user"></i> Artistas</h1>
 		</div>
-	{% endfor %}
+	</div>
+
+	<div class="container">
+		{% for artista in artistas %}	
+			<div class="row artist">
+				<div class="col-md-4 text-center">
+					<img class="img-thumbnail" src="http://placehold.it/250x250">
+				</div>
+				<div class="col-md-8">
+					<h2>{{ artista.nome }}</h2>
+					<hr>
+					<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					{% if artista.album_set.count %}
+						<hr>
+						<a href="#albuns" class="btn btn-info pull-right">Ver albuns</a>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 
 {% include 'footer.html' %}
