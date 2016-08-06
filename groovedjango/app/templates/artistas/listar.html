@@ -10,10 +10,10 @@
 		{% for artista in artistas %}	
 			<div class="row artist">
 				<div class="col-md-4 text-center">
-					<img class="img-thumbnail" src="http://placehold.it/250x250">
+					<img class="img-thumbnail" src="{{ artista.get_foto_url|default:'http://placehold.it/250x250' }}">
 				</div>
 				<div class="col-md-8">
-					<h2>{{ artista.nome }}</h2>
+					<h2><a href="{% url 'artistas_detalhar' artista.nome %}">{{ artista.nome }}</a></h2>
 					<hr>
 					<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -25,7 +25,7 @@
 					</p>
 					{% if artista.album_set.count %}
 						<hr>
-						<a href="#albuns" class="btn btn-info pull-right">Ver albuns</a>
+						<a href="{% url 'artistas_detalhar' artista.nome %}#albuns" class="btn btn-info pull-right">Ver albuns</a>
 					{% endif %}
 				</div>
 			</div>

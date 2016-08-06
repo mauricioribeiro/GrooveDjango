@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+
+	<div class="pos-header">
+		<div class="container">
+			<h1><i class="glyphicon glyphicon-user"></i> {{ artista.nome }}</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row artist">
+			<div class="col-md-4 text-center">
+				<img class="img-thumbnail" src="{{ artista.get_foto_url|default:'http://placehold.it/250x250' }}">
+			</div>
+			<div class="col-md-8">
+				<h2>Biografia</h2>
+				<hr>
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<a href="{% url 'artistas_listar' %}" class="btn btn-info pull-right">Voltar a lista de Artistas</a>
+			</div>
+		</div>
+		<div class="row">
+			<h2 id="albuns">Albuns</h2>
+			<hr>
+			{% if artista.album_set.count %}
+				{% for album in artista.album_set.all %}
+					<div class="col-md-4 text-center">
+						<img class="img-thumbnail" src="{{ album.get_foto_url|default:'http://placehold.it/250x250' }}">
+					</div>
+					<div class="col-md-8">
+						<h2>{{ album.nome }}</h2>
+						<hr>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Faixa</th>
+									<th>Duração</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% if album.musica_set.count %}
+									{% for musica in album.musica_set.all %}
+										<tr>
+											<td>{{ musica.nome }}</td>
+											<td>{{ musica.get_duracao }}</td>
+										</tr>
+									{% endfor %}
+								{% else %}
+									<tr>
+										<td colspan="2"><i>Sem faixas para este album</i></td>
+									</tr>
+								{% endif %}
+							</tbody>
+						</table>
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="col-md-12">
+					<p>Nenhum album encontrado para este Artista</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+{% include 'footer.html' %}
